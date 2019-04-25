@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlightModule} from './flight/flight.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptorService} from './core/auth-interceptor.service';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {AuthInterceptorService} from './core/auth-interceptor.service';
     MatIconModule,
     BrowserAnimationsModule,
     FlightModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [
     {
