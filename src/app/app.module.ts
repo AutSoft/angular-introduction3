@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {MatButtonModule, MatIconModule, MatInputModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlightModule} from './flight/flight.module';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptorService} from './core/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,16 @@ import {FlightModule} from './flight/flight.module';
     MatInputModule,
     MatIconModule,
     BrowserAnimationsModule,
-    FlightModule
+    FlightModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FlightService} from './flight.service';
 
 @Component({
@@ -9,10 +9,12 @@ import {FlightService} from './flight.service';
 export class FlightComponent implements OnInit {
   flights: any;
 
-  constructor(private flightService: FlightService) { }
+  constructor(private flightService: FlightService) {
+  }
 
   ngOnInit() {
-    this.flights = this.flightService.listFlights();
+    this.flightService.listFlights()
+      .subscribe(data => console.log(data), e => console.log(e), () => console.log('complete'));
   }
 
 }
